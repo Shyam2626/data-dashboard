@@ -109,7 +109,9 @@ def _set_cookie(name: str, value: str, expires_at: datetime) -> None:
 
 
 def _delete_cookie(name: str) -> None:
-    _cookie_manager().delete(name)
+        mgr = _cookie_manager()
+        if name in mgr.cookies:
+            mgr.delete(name)
 
 
 # ── OAuth / PKCE ──────────────────────────────────────────────────────────────
