@@ -17,11 +17,20 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+def _secret(key: str, default: str | None = None) -> str | None:
+    val = os.environ.get(key)
+    if val:
+        return val
+    try:
+        return st.secrets.get(key, default)
+    except Exception:
+        return default
+
 ALLOWED_DOMAIN = "superops.com"
-GOOGLE_CLIENT_ID = os.environ["GOOGLE_CLIENT_ID"]
-GOOGLE_CLIENT_SECRET = os.environ["GOOGLE_CLIENT_SECRET"]
-REDIRECT_URI = os.environ.get("REDIRECT_URI", "http://localhost:8501")
-SESSION_DURATION_HOURS = int(os.environ.get("SESSION_DURATION_HOURS", 8))
+GOOGLE_CLIENT_ID = _secret("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = _secret("GOOGLE_CLIENT_SECRET")
+REDIRECT_URI = _secret("REDIRECT_URI", "http://localhost:8501")
+SESSION_DURATION_HOURS = int(_secret("SESSION_DURATION_HOURS", "8"))
 
 SCOPES = [
     "openid",
