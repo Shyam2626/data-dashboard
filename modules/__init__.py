@@ -1,4 +1,4 @@
-from modules import billing, tickets, contracts, rmm
+from modules import billing, tickets, contracts, rmm, policy
 
 # Registry — add new modules here as they are built.
 # key   : display name shown in the sidebar
@@ -8,4 +8,5 @@ REGISTRY: dict[str, object] = {
     "Tickets": tickets,
     "Contracts": contracts,
     "RMM": rmm,
+    "Policy": policy,
 }

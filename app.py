@@ -15,6 +15,7 @@ _NAV = {
     "Tickets":   ("🎫", "Ticket volume and SLA metrics"),
     "Contracts": ("📄", "Contract coverage and renewals"),
     "RMM":       ("🖥️", "Remote monitoring and management"),
+    "Policy":    ("🛡️", "Policy adoption and automation"),
 }
 
 if "active_module" not in st.session_state:
